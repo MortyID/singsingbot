@@ -128,9 +128,8 @@ async def main():
 
     banner = f"""
     {magenta}┏┓┳┳┓┏┓┏┓┳┳┓┏┓  {white}SingSing Auto Claim
-    {magenta}┗┓┃┃┃┃┓┗┓┃┃┃┃┓  {green}Author : {white}AkasakaID
-    {magenta}┗┛┻┛┗┗┛┗┛┻┛┗┗┛  {white}Github : {green}https://github.com/AkasakaID
-    {magenta}                {green}Note : {white}Every Action Has a Consequence
+    {magenta}┗┓┃┃┃┃┓┗┓┃┃┃┃┓  {green}Author : {white}zekazync
+    {magenta}┗┛┻┛┗┗┛┗┛┻┛┗┗┛  {white}Github : {green}https://github.com/zekazync
     """
     print(banner)
     async with aiohttp.ClientSession() as session:
