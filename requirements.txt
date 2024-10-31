@@ -1,0 +1,7 @@
+aiohttp
+asyncio
+json
+sys
+colorama
+os
+requests
