@@ -135,7 +135,13 @@ async def main():
     async with aiohttp.ClientSession() as session:
         for index, account in enumerate(accounts):
             access_token, username = await auth(session, account)
-            print(f"=============== {green}{index + 1}/{total_accounts} | {username}{reset} ===============")
+            if len(username) > 15:
+                username = f"{username[:12]}..."
+            
+            # Calculate the dynamic length of `=` padding
+            left_padding = right_padding = '=' * ((50 - len(f"{index + 1}/{total_accounts} | {username}")) // 2)
+            separator_line = f"{green}{left_padding} {index + 1}/{total_accounts} | {username} {right_padding}{reset}"
+            print(separator_line.ljust(50))
             
             profit, money, token = await claim_offline_profit(session, access_token)
             print(f"{green}Successfully claimed offline profit: {profit}{reset} 💸")
@@ -175,6 +181,11 @@ async def main():
                     else:
                         print(f"{red}Failed to solve task: {description}{reset}")
                         await asyncio.sleep(1)
+    print(f"{Fore.MAGENTA}{'=' * 51}{Style.RESET_ALL}")
+    print(f"{yellow}Waiting 1 minutes for next looping{reset}")
+    await asyncio.sleep(60)
+            
+            
 
 if __name__ == "__main__":
     while True:
